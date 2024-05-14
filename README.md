@@ -8,7 +8,7 @@ Python 3.9
 Pip dependencies:   
 opencv and opencv contrib version 4.5.5.64  
 numpy version 1.23.1  
-wpilib python latest from docs (do not do pip install ntcore, that is a completely different library, don't ask me how I know)  
+wpilib python latest from docs, and make sure it is the aarch64 (or arm64) version (do not do pip install ntcore, that is a completely different library, don't ask me how I know)  
 pillow latest (as of now, version 10.3.0)  
 
 
