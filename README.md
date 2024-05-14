@@ -26,4 +26,6 @@ Place this inside a new file called 99-camera-config.rules inside the /etc/udev/
 SUBSYSTEM=="video4linux", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="6366", ATTRS{serial}=="UC6211", SYMLINK+="cam1"`  
 
 After this, run `sudo udevadm control --reload-rules && sudo udevadm trigger` to refresh the rules  
-Then test by running `sudo v4l2-ctl -d /dev/cam0 --list-formats-ext ` where cam0 is the symlink you created
+Then test by running `sudo v4l2-ctl -d /dev/cam0 --list-formats-ext ` where cam0 is the symlink you created  
+  
+Also you need to run `sudo udevadm control --reload-rules && sudo udevadm trigger` every time the cameras are disconnected/connected after boot
