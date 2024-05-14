@@ -16,7 +16,11 @@ pillow latest (as of now, version 10.3.0)
 
 First change the cameras serial numbers to something unique with arducam's serial number changer (don't change device name, that causes some problems): [https://docs.arducam.com/UVC-Camera/Serial-Number-Tool-Guide/](url)  
 
-Place this inside a new file called 99-camera-config.rules inside the /etc/udev/rules.d directory (make sure to change serial numbers to match the result of `sudo udevadm info --name=/dev/videoX --attribute-walk` where x is camera number, found by trial and error of ` sudo v4l2-ctl -d /dev/camX --list-formats-ext`): here X will be trial and error, and if a camera is at 0, the next camera will be at 2, not 1:  
+Then run `sudo apt install v4l-utils ` then `v4l2-ctl --list-devices` and find the device number of the cameras  
+Note: if a camera is at the index video0, the next camera will be at video2, not video1 because of drivers and stuff (idk the exact reason why but that's the way it works)
+`
+
+Place this inside a new file called 99-camera-config.rules inside the /etc/udev/rules.d directory (make sure to change serial numbers to match the result of `sudo udevadm info --name=/dev/videoX --attribute-walk` where x is camera number.
 
 `SUBSYSTEM=="video4linux", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="6366", ATTRS{serial}=="UC621", SYMLINK+="cam0"
 SUBSYSTEM=="video4linux", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="6366", ATTRS{serial}=="UC6211", SYMLINK+="cam1"`  
