@@ -1,4 +1,5 @@
-Ubuntu 22.02 from orangepi website (need to figure out why vnc and samba don't work, but not critical)
+Ubuntu 22.02 from orangepi websit (gui version for easier camera calibration, use xfce, most ligtweight gui) 
+(need to figure out why vnc and samba don't work, but not critical)
 Installed openssh
 Done with miniconda (from conda website), theoretically you don't need this, I used it to quickly set up and make new virtual python environments for testing purposes
 
