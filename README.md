@@ -59,4 +59,6 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-```
+```  
+After that, run `sudo systemctl daemon-reload`  
+Then run `sudo systemctl enable northstarX.service`  and you should start northstar on boot. Make sure to repeat for all instances of northstar.
