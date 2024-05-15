@@ -28,4 +28,27 @@ SUBSYSTEM=="video4linux", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="6366", ATT
 After this, run `sudo udevadm control --reload-rules && sudo udevadm trigger` to refresh the rules  
 Then test by running `sudo v4l2-ctl -d /dev/cam0 --list-formats-ext ` where cam0 is the symlink you created  
   
-Also you need to run `sudo udevadm control --reload-rules && sudo udevadm trigger` every time the cameras are disconnected/connected after boot
+Also you need to run `sudo udevadm control --reload-rules && sudo udevadm trigger` every time the cameras are disconnected/connected after boot 
+
+Start on boot  
+Make an sh file called northstarX.sh somewhere where you can easily access for each northstar instance running on that coproccessor
+Put this in the sh file  
+```
+```  
+run `chmod +x northstarX.sh`  
+naigate to `/etc/systemd/system`  
+create a file called northstarX.service
+put this in the file:  
+```
+[Unit]
+Description=northstarX
+After=network.target
+
+[Service]
+ExecStart=/Path/To/sh/file.sh
+Type=simple
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
