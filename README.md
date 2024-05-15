@@ -33,7 +33,15 @@ Also you need to run `sudo udevadm control --reload-rules && sudo udevadm trigge
 Start on boot  
 Make an sh file called northstarX.sh somewhere where you can easily access for each northstar instance running on that coproccessor
 Put this in the sh file  
+**(Make sure to verify the miniconda directory and northstar directories)**
 ```
+#!/bin/bash
+if [ -f "/home/orangepi/miniconda3/etc/profile.d/conda.sh" ]; then
+    . "/home/orangepi/miniconda3/etc/profile.d/conda.sh"
+    CONDA_CHANGEPS1=false conda activate vision
+fi
+cd /home/orangepi/vision/vision/northstar
+python __init__.py
 ```  
 run `chmod +x northstarX.sh`  
 naigate to `/etc/systemd/system`  
