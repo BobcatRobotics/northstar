@@ -47,12 +47,24 @@ class DefaultCapture(Capture):
             self._video = None
 
         if self._video == None:
-            self._video = cv2.VideoCapture(config_store.remote_config.camera_id)
-            self._video.set(cv2.CAP_PROP_FRAME_WIDTH, config_store.remote_config.camera_resolution_width)
-            self._video.set(cv2.CAP_PROP_FRAME_HEIGHT, config_store.remote_config.camera_resolution_height)
+            # self._video = cv2.VideoCapture(config_store.remote_config.camera_id)
+            # self._video.set(cv2.CAP_PROP_FRAME_WIDTH, config_store.remote_config.camera_resolution_width)
+            # self._video.set(cv2.CAP_PROP_FRAME_HEIGHT, config_store.remote_config.camera_resolution_height)
+            # self._video.set(cv2.CAP_PROP_AUTO_EXPOSURE, config_store.remote_config.camera_auto_exposure)
+            # self._video.set(cv2.CAP_PROP_EXPOSURE, config_store.remote_config.camera_exposure)
+            # self._video.set(cv2.CAP_PROP_GAIN, config_store.remote_config.camera_gain)
+            self._video = cv2.VideoCapture("/dev/"+str(config_store.remote_config.camera_id),cv2.CAP_V4L2)
+            self._video.set(cv2.CAP_PROP_AUTO_EXPOSURE, 3)
             self._video.set(cv2.CAP_PROP_AUTO_EXPOSURE, config_store.remote_config.camera_auto_exposure)
             self._video.set(cv2.CAP_PROP_EXPOSURE, config_store.remote_config.camera_exposure)
             self._video.set(cv2.CAP_PROP_GAIN, config_store.remote_config.camera_gain)
+            self._video.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
+            self._video.set(cv2.CAP_PROP_FPS, config_store.remote_config.frame_rate)
+            # self._video.set(cv2.CAP_PROP_FRAME_WIDTH, 1600)
+            # self._video.set(cv2.CAP_PROP_FRAME_HEIGHT, 1200)
+            self._video.set(cv2.CAP_PROP_FRAME_WIDTH, config_store.remote_config.camera_resolution_width)
+            self._video.set(cv2.CAP_PROP_FRAME_HEIGHT, config_store.remote_config.camera_resolution_height)
+
 
         self._last_config = config_store
 
@@ -85,15 +97,17 @@ class GStreamerCapture(Capture):
 #                   config_store.remote_config.camera_exposure) + ",gain=" + str(config_store.remote_config.camera_gain) + ",sharpness=0,brightness=0\" ! image/jpeg,format=MJPG,width=" + str(config_store.remote_config.camera_resolution_width) + ",height=" + str(config_store.remote_config.camera_resolution_height) + " ! jpegdec ! video/x-raw ! appsink drop=1", cv2.CAP_GSTREAMER)
                 # self._video = cv2.VideoCapture(int(config_store.remote_config.camera_id),cv2.CAP_V4L2)
                 self._video = cv2.VideoCapture("/dev/"+str(config_store.remote_config.camera_id),cv2.CAP_V4L2)
+                self._video.set(cv2.CAP_PROP_AUTO_EXPOSURE, 3)
+                self._video.set(cv2.CAP_PROP_AUTO_EXPOSURE, config_store.remote_config.camera_auto_exposure)
+                self._video.set(cv2.CAP_PROP_EXPOSURE, config_store.remote_config.camera_exposure)
+                self._video.set(cv2.CAP_PROP_GAIN, config_store.remote_config.camera_gain)
                 self._video.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
                 self._video.set(cv2.CAP_PROP_FPS, config_store.remote_config.frame_rate)
                 # self._video.set(cv2.CAP_PROP_FRAME_WIDTH, 1600)
                 # self._video.set(cv2.CAP_PROP_FRAME_HEIGHT, 1200)
                 self._video.set(cv2.CAP_PROP_FRAME_WIDTH, config_store.remote_config.camera_resolution_width)
                 self._video.set(cv2.CAP_PROP_FRAME_HEIGHT, config_store.remote_config.camera_resolution_height)
-                self._video.set(cv2.CAP_PROP_AUTO_EXPOSURE, config_store.remote_config.camera_auto_exposure)
-                self._video.set(cv2.CAP_PROP_EXPOSURE, config_store.remote_config.camera_exposure)
-                self._video.set(cv2.CAP_PROP_GAIN, config_store.remote_config.camera_gain)
+
 
 
 #				self._video.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))

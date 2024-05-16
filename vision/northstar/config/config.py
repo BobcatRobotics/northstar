@@ -5,8 +5,8 @@ import numpy.typing
 
 @dataclass
 class LocalConfig:
-    device_id: str = "northstar"
-    server_ip: str = "localhost"
+    device_id: str = "northstar0"
+    server_ip: str = "192.168.1.19"
     stream_port: int = 8002
     has_calibration: bool = True
     camera_matrix: numpy.typing.NDArray[numpy.float64] = numpy.array([])
@@ -15,15 +15,15 @@ class LocalConfig:
 
 @dataclass
 class RemoteConfig:
-    camera_id: str = "0"
-    camera_resolution_width: int = 800
-    camera_resolution_height: int = 600
+    camera_id: str = ""
+    camera_resolution_width: int = 0
+    camera_resolution_height: int = 0
     camera_auto_exposure: int = 1
-    camera_exposure: int = 100000
-    camera_gain: int = 1
+    camera_exposure: int = 0
+    camera_gain: int = 0
     fiducial_size_m: float = 0
+    frame_rate: int = 0
     tag_layout: any = None
-    frame_rate: int = 50
 
 
 @dataclass
