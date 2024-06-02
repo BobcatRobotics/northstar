@@ -80,3 +80,5 @@ Then run `sudo systemctl enable northstarX.service`  and you should start norths
 ### Todo
 1. Need to figure out why vnc and samba don't work, but this isn't critical
 2. ~~Need to look into making sure that camera ids don't change if they get disconnected/reconnected, there's a post on how to do it in 6328's 2023 build thread~~
+3. Gstreamer: [https://discuss.bluerobotics.com/t/opencv-python-with-gstreamer-backend/8842
+](url)
