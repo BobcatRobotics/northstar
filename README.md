@@ -17,7 +17,8 @@
    5. wpilib python latest from docs, and make sure it is the aarch64 (or arm64)   
       version (do not do pip install ntcore, that is a completely different library,
       don't ask me how I know)
-
+[      https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/python-setup.html
+](url)
 10. Now copy the code from this repo and place it into a folder in the home directory.
    
 ## Create Symlink
