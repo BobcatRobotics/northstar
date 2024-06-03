@@ -96,3 +96,18 @@ pip wheel . --verbose
 pip install opencv_python*.whl
 # note, wheel may be generated in dist/ directory, so may have to cd first
 ```
+
+this is prob better?
+```
+# <navigate to where you want the opencv-python repo to be stored>
+git clone --recursive https://github.com/skvark/opencv-python.git
+cd opencv-python
+git checkout 64 #this is the tag for opencv-python 4.5.5.64
+export CMAKE_ARGS="-DWITH_GSTREAMER=ON"
+pip install --upgrade pip wheel
+# this is the build step - the repo estimates it can take from 5 
+#   mins to > 2 hrs depending on your computer hardware
+pip wheel . --verbose
+pip install opencv_python*.whl
+# note, wheel may be generated in dist/ directory, so may have to cd first
+```
