@@ -83,3 +83,16 @@ Then run `sudo systemctl enable northstarX.service`  and you should start norths
 2. ~~Need to look into making sure that camera ids don't change if they get disconnected/reconnected, there's a post on how to do it in 6328's 2023 build thread~~
 3. Gstreamer: [https://discuss.bluerobotics.com/t/opencv-python-with-gstreamer-backend/8842
 ](url)
+
+## Build OpenCV manually for gstreamer
+```
+git clone --recursive git@github.com:mygitname/theproject.git --branch 4.5.5
+cd opencv-python
+export CMAKE_ARGS="-DWITH_GSTREAMER=ON"
+pip install --upgrade pip wheel
+# this is the build step - the repo estimates it can take from 5 
+#   mins to > 2 hrs depending on your computer hardware
+pip wheel . --verbose
+pip install opencv_python*.whl
+# note, wheel may be generated in dist/ directory, so may have to cd first
+```
