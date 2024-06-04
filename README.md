@@ -111,4 +111,6 @@ pip wheel . --verbose
 pip install opencv_python*.whl
 # note, wheel may be generated in dist/ directory, so may have to cd first
 ```
+
+IMPORTANT: after cloning the repo, make sure to change the version in pyproject.toml to ```scikit-build==0.13.0```
 [https://github.com/opencv/opencv-python/issues/648](url)
