@@ -111,3 +111,4 @@ pip wheel . --verbose
 pip install opencv_python*.whl
 # note, wheel may be generated in dist/ directory, so may have to cd first
 ```
+[https://github.com/opencv/opencv-python/issues/648](url)
