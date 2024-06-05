@@ -98,6 +98,7 @@ pip wheel . --verbose
 pip install opencv_contrib_python*.whl
 # note, wheel may be generated in dist/ directory, so may have to cd first
 ```
+Theoretically, the build steps are not needed, and you can just install the prebuilt file in this repo (named opencv_contrib_python*.whl)
 
 ### Todo
 1. Need to figure out why vnc and samba don't work, but this isn't critical
