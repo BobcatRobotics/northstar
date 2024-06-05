@@ -100,6 +100,10 @@ pip install opencv_contrib_python*.whl
 ```
 Theoretically, the build steps are not needed, and you can just install the prebuilt file in this repo (named opencv_contrib_python*.whl)
 
+## Calibration
+Use instructions in 6328 calibration-instructions.txt
+Holy Cows calibration board: for a 24 inch monitor (at least mine: 12x9, PPI=264, Scale=12)
+
 ### Todo
 1. Need to figure out why vnc and samba don't work, but this isn't critical
 2. ~~Need to look into making sure that camera ids don't change if they get disconnected/reconnected, there's a post on how to do it in 6328's 2023 build thread~~
