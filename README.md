@@ -95,7 +95,7 @@ pip install --upgrade pip wheel
 # this is the build step - the repo estimates it can take from 5 
 #   mins to > 2 hrs depending on your computer hardware
 pip wheel . --verbose
-pip install opencv_python*.whl
+pip install opencv_contrib_python*.whl
 # note, wheel may be generated in dist/ directory, so may have to cd first
 ```
 
