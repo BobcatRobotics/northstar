@@ -10,8 +10,8 @@
 7. Use conda to create and activate a new Python 3.9 environment
    
 9. Install the following python dependencies (make sure you are in the conda environment you created):
-   1. opencv-python==4.5.5.64
-   2. opencv-contrib-python==4.5.5.64
+   1. ~~opencv-python==4.5.5.64~~ See below
+   2. ~~opencv-contrib-python==4.5.5.64~~ See below
    3. numpy==1.23.1
    4. pillow==10.3.0
    5. wpilib python latest from docs, and make sure it is the aarch64 (or arm64)   
@@ -79,12 +79,6 @@ WantedBy=multi-user.target
 6. After that, run `sudo systemctl daemon-reload`  
 Then run `sudo systemctl enable northstarX.service`  and you should start northstar on boot. Make sure to repeat for all instances of northstar.
 
-### Todo
-1. Need to figure out why vnc and samba don't work, but this isn't critical
-2. ~~Need to look into making sure that camera ids don't change if they get disconnected/reconnected, there's a post on how to do it in 6328's 2023 build thread~~
-3. ~~Gstreamer: [https://discuss.bluerobotics.com/t/opencv-python-with-gstreamer-backend/8842
-](url)~~
-
 ## Build OpenCV manually for gstreamer
 ```
 # <navigate to where you want the opencv-python repo to be stored>
@@ -96,6 +90,7 @@ IMPORTANT: after cloning the repo, make sure to change the version in pyproject.
 [https://github.com/opencv/opencv-python/issues/648](url)
 ```
 export CMAKE_ARGS="-DWITH_GSTREAMER=ON"
+export ENABLE_CONTRIB=1
 pip install --upgrade pip wheel
 # this is the build step - the repo estimates it can take from 5 
 #   mins to > 2 hrs depending on your computer hardware
@@ -103,3 +98,9 @@ pip wheel . --verbose
 pip install opencv_python*.whl
 # note, wheel may be generated in dist/ directory, so may have to cd first
 ```
+
+### Todo
+1. Need to figure out why vnc and samba don't work, but this isn't critical
+2. ~~Need to look into making sure that camera ids don't change if they get disconnected/reconnected, there's a post on how to do it in 6328's 2023 build thread~~
+3. ~~Gstreamer: [https://discuss.bluerobotics.com/t/opencv-python-with-gstreamer-backend/8842
+](url)~~
