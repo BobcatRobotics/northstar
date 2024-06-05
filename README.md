@@ -19,6 +19,7 @@
       don't ask me how I know)
 [      https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/python-setup.html
 ](url)
+   6. ```pip install pycairo PyGObject``` this is needed to install gi
 10. Now copy the code from this repo and place it into a folder in the home directory.
    
 ## Create Symlink
@@ -81,28 +82,19 @@ Then run `sudo systemctl enable northstarX.service`  and you should start norths
 ### Todo
 1. Need to figure out why vnc and samba don't work, but this isn't critical
 2. ~~Need to look into making sure that camera ids don't change if they get disconnected/reconnected, there's a post on how to do it in 6328's 2023 build thread~~
-3. Gstreamer: [https://discuss.bluerobotics.com/t/opencv-python-with-gstreamer-backend/8842
-](url)
+3. ~~Gstreamer: [https://discuss.bluerobotics.com/t/opencv-python-with-gstreamer-backend/8842
+](url)~~
 
 ## Build OpenCV manually for gstreamer
-```
-git clone --recursive git@github.com:mygitname/theproject.git --branch 4.5.5
-cd opencv-python
-export CMAKE_ARGS="-DWITH_GSTREAMER=ON"
-pip install --upgrade pip wheel
-# this is the build step - the repo estimates it can take from 5 
-#   mins to > 2 hrs depending on your computer hardware
-pip wheel . --verbose
-pip install opencv_python*.whl
-# note, wheel may be generated in dist/ directory, so may have to cd first
-```
-
-this is prob better?
 ```
 # <navigate to where you want the opencv-python repo to be stored>
 git clone --recursive https://github.com/skvark/opencv-python.git
 cd opencv-python
 git checkout 64 #this is the tag for opencv-python 4.5.5.64
+```
+IMPORTANT: after cloning the repo, make sure to change the version in pyproject.toml to ```scikit-build==0.13.0```
+[https://github.com/opencv/opencv-python/issues/648](url)
+```
 export CMAKE_ARGS="-DWITH_GSTREAMER=ON"
 pip install --upgrade pip wheel
 # this is the build step - the repo estimates it can take from 5 
@@ -111,6 +103,3 @@ pip wheel . --verbose
 pip install opencv_python*.whl
 # note, wheel may be generated in dist/ directory, so may have to cd first
 ```
-
-IMPORTANT: after cloning the repo, make sure to change the version in pyproject.toml to ```scikit-build==0.13.0```
-[https://github.com/opencv/opencv-python/issues/648](url)
