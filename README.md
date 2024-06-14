@@ -110,3 +110,6 @@ Holy Cows calibration board: for a 24 inch monitor (at least mine: 12x9, PPI=264
 3. ~~Gstreamer: [https://discuss.bluerobotics.com/t/opencv-python-with-gstreamer-backend/8842
 ](url)~~
 4. Object tracking+detection: [https://github.com/google-coral/example-object-tracker/tree/master/gstreamer](url)
+
+
+https://www.chiefdelphi.com/t/yolov5-8-training-and-conversion-to-rknn-notebooks/452716?u=adithya_anand
