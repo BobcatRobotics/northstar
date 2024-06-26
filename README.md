@@ -103,6 +103,33 @@ Theoretically, the build steps are not needed, and you can just install the preb
 Use instructions in 6328 calibration-instructions.txt
 Holy Cows calibration board: for a 24 inch monitor (at least mine: 12x9, PPI=264, Scale=12)
 
+Or, take images and run the manual calibrate.py file.
+
+## Benchmarking
+FPS is measured at the beggining, and after sustained loads to simulate a real match. All cameras are focused and placed about 5 feet away from an apriltag with an exposure of 150 and a gain of 2. Everything is measured at its max resolution (1600x1200 for arducams and 1600x1304 for ThriftyCams).
+
+
+##### ThriftyCams
+| Time | FPS |
+| ------------- | ------------- |
+| Immediately after boot  | 55-60  |
+| 45 seconds in  | 45-50  |
+| 1:30 minutes in  | 30-40  |
+| 2 minutes in  | 28-34 |
+| 2:30 minutes in  | 25-32 |
+
+##### Arducams
+| Time | FPS |
+| ------------- | ------------- |
+| Immediately after boot  | 45-50  |
+| 45 seconds in  | 35-40  |
+| 1:30 minutes in  | 30-35  |
+| 2 minutes in  | 25-30 |
+| 2:30 minutes in  | 20-28 |
+
+The declining performance is due to thermal throttling on the OrangePi. Better cooling systems may better articulate the differences between the cameras, but the extra 10 peak fps on the ThriftyCams seem to help, at least somewhat. Another thing to consider is that ThriftyCams are running at a higher resolution than the ArduCams. Still, they have slightly better frame rates than the ArduCams. 
+
+
 ### Todo
 1. Need to figure out why vnc and samba don't work, but this isn't critical
 2. ~~Need to look into making sure that camera ids don't change if they get disconnected/reconnected, there's a post on how to do it in 6328's 2023 build thread~~
