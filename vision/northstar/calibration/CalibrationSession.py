@@ -17,9 +17,11 @@ class CalibrationSession:
         self._aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_1000)
         self._aruco_params = cv2.aruco.DetectorParameters_create()
         self._charuco_board = cv2.aruco.CharucoBoard_create(
-            12, 9, 0.030, 0.023, self._aruco_dict)
+            12, 9, 0.03, 0.023, self._aruco_dict)
+            # 12, 9, 0.015, 0.011, self._aruco_dict)
 
-    def process_frame(self, image: cv2.Mat, save: bool) -> None:
+
+    def process_frame(self, image: cv2.Mat, save: bool, index: int) -> None:
         # Get image size
         if self._imsize == None:
             self._imsize = (image.shape[0], image.shape[1])
@@ -34,12 +36,14 @@ class CalibrationSession:
                 corners, ids, image, self._charuco_board)
             if retval:
                 cv2.aruco.drawDetectedCornersCharuco(image, charuco_corners, charuco_ids)
-
+                cv2.imshow("Calibration", image)
+                cv2.waitKey(0)
                 # Save corners
                 if save:
                     self._all_charuco_corners.append(charuco_corners)
                     self._all_charuco_ids.append(charuco_ids)
-                    print("Saved calibration frame")
+                    print("Saved calibration frame" + str(index))
+
 
     def finish(self) -> None:
         if len(self._all_charuco_corners) == 0:
@@ -51,6 +55,12 @@ class CalibrationSession:
 
         (retval, camera_matrix, distortion_coefficients, rvecs, tvecs) = cv2.aruco.calibrateCameraCharuco(
             self._all_charuco_corners, self._all_charuco_ids, self._charuco_board, self._imsize, None, None)
+        # reperror = cv2.aruco.calibrateCameraCharuco(
+        #     self._all_charuco_corners, self._all_charuco_ids, self._charuco_board, self._imsize, None, None)
+        # print("Reprojection error: " + str(reperror))
+
+        # reprojection_error = cv2.reprojectImageTo3D(self._all_charuco_corners, rvecs, tvecs, camera_matrix, distortion_coefficients)
+        print("Reprojection error: " + str(retval))
 
         if retval:
             calibration_store = cv2.FileStorage(FileConfigSource.CALIBRATION_FILENAME, cv2.FILE_STORAGE_WRITE)

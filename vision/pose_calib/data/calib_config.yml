@@ -5,7 +5,7 @@ image_width: 1600
 image_height: 1200
 board_x: 12
 board_y: 9
-square_len: 30
-marker_len: 23
+square_len: 20
+marker_len: 15
 dictionary: 7
 pt_min_markers: 1

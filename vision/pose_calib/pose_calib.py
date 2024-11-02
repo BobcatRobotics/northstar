@@ -22,11 +22,11 @@ class UVCVideoCapture:
 
         imsize = (int(cfg.getNode("image_width").real()), int(cfg.getNode("image_height").real()))
         
-        cam_id = 0
-        if not cfg.getNode("v4l_id").empty():
-            cam_id = "/dev/video{}".format(cfg.getNode("v4l_id").string())
+        # cam_id = 0
+        # if not cfg.getNode("v4l_id").empty():
+        #     cam_id = "/dev/video{}".format(cfg.getNode("v4l_id").string())
         
-        cap = cv2.VideoCapture(cam_id)
+        cap = cv2.VideoCapture(1)
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, imsize[0])
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, imsize[1])
         cap.set(cv2.CAP_PROP_GAIN, 0.0)
@@ -74,9 +74,9 @@ def main():
     assert cfg.isOpened()
 
     calib_name = "default"
-    if not cfg.getNode("v4l_id").empty():
-        calib_name = cfg.getNode("v4l_id").string()
-
+    # if not cfg.getNode("v4l_id").empty():
+    #     calib_name = cfg.getNode("v4l_id").string()
+    
     # Video I/O
     live = cfg.getNode("images").empty()
     if live:
