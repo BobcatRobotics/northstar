@@ -3,9 +3,9 @@
 terminate_var: 0.1
 image_width: 1600
 image_height: 1200
-board_x: 12
-board_y: 9
-square_len: 30
-marker_len: 23
-dictionary: 7
+board_x: 8
+board_y: 8
+square_len: 25.4
+marker_len: 19.05
+dictionary: 4
 pt_min_markers: 1
