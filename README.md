@@ -1,4 +1,4 @@
-# Steps to get 6328's NorthStar working (adapted to use for 177)
+# Steps to get NorthStar working
 
 ## Initial Installation
 1. Get an OrangePi and flash Ubuntu 22.02 XFCE (from the OrangePi website, not from Ubuntu website) to a microSD card. The GUI is necessary for calibration, but if you already have the calibration file, then you could theoretically run this headless. Note: If you decide to run it headless, make sure to reflect that when installing opencv.
